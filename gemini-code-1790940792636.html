@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guppyverse Hub - Lobby</title>
+<style>
+:root {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-color: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent: #00f5d4;
+  --border: rgba(255, 255, 255, 0.1);
+}
+[data-theme="light"] {
+  --bg-color: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-color: #0f172a;
+  --text-muted: #64748b;
+  --accent: #0ea5e9;
+  --border: rgba(0, 0, 0, 0.1);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;background:var(--bg-color);color:var(--text-color);min-height:100vh;transition:all 0.3s}
+header{padding:20px;background:var(--card-bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.header-container{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+h1{margin:0;font-size:22px;color:var(--accent)}
+.theme-btn{background:var(--border);border:none;color:var(--text-color);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:14px}
+
+main{max-width:700px;margin:30px auto;padding:0 15px}
+.feed-card{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;margin-bottom:30px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.15)}
+.feed-header{padding:14px 18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#00f5d4,#0ea5e9);display:flex;align-items:center;justify-content:center;font-weight:bold;color:#0d1b2a}
+.feed-user-info h3{margin:0;font-size:14px}
+.feed-user-info span{font-size:11px;color:var(--text-muted)}
+
+/* IG Post Media Box */
+.feed-media{background:radial-gradient(circle,#1e3a4c,#0b1924);padding:40px 20px;text-align:center;position:relative}
+.feed-media h2{color:#00f5d4;margin:0 0 10px 0;font-size:24px}
+.feed-media p{color:#e2e8f0;font-size:14px;margin:0 0 20px 0}
+.visit-btn{background:#00f5d4;color:#0d1b2a;border:none;padding:12px 24px;border-radius:10px;font-weight:bold;cursor:pointer;font-size:14px;text-decoration:none;display:inline-block;transition:transform 0.2s}
+.visit-btn:hover{transform:scale(1.05)}
+
+/* IG Action Bar */
+.feed-actions{padding:12px 18px;display:flex;gap:15px;border-bottom:1px solid var(--border)}
+.action-icon-btn{background:none;border:none;color:var(--text-color);cursor:pointer;font-size:18px;display:flex;align-items:center;gap:6px;transition:color 0.2s}
+.action-icon-btn:hover{color:var(--accent)}
+
+/* Content & Comments Section */
+.feed-content{padding:15px 18px}
+.likes-count{font-weight:bold;font-size:13px;margin-bottom:8px}
+.caption{font-size:13px;margin-bottom:15px;line-height:1.5}
+.caption strong{color:var(--accent)}
+
+.comments-section{margin-top:15px;border-top:1px dashed var(--border);padding-top:12px}
+.comments-list{max-height:180px;overflow-y:auto;margin-bottom:12px;font-size:13px}
+.comment-item{margin-bottom:8px;background:var(--border);padding:8px 12px;border-radius:8px}
+.comment-item strong{color:var(--accent);margin-right:6px}
+
+.comment-form{display:flex;gap:8px}
+.comment-input{flex:1;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-color);color:var(--text-color);font-size:13px;outline:none}
+.submit-comment-btn{background:var(--accent);color:#0d1b2a;border:none;padding:8px 14px;border-radius:8px;font-weight:bold;cursor:pointer;font-size:13px}
+
+/* Review Modal / Drawer Box */
+.review-box{margin-top:15px;background:var(--border);padding:12px 15px;border-radius:10px;display:none}
+.review-box.active{display:block}
+.stars{display:flex;gap:5px;cursor:pointer;font-size:20px;margin-bottom:8px}
+.star{color:var(--text-muted)}
+.star.selected{color:#ffd166}
+</style>
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="header-container">
+    <h1>🐟 Guppyverse Hub</h1>
+    <button class="theme-btn" onclick="toggleTheme()">🌙 / ☀️</button>
+  </div>
+</header>
+
+<main>
+  <!-- POST 1: GUPPY SIMULATOR -->
+  <article class="feed-card">
+    <div class="feed-header">
+      <div class="avatar">G</div>
+      <div class="feed-user-info">
+        <h3>Guppy Lab Official</h3>
+        <span>Simulasi Genetik & Breeding</span>
+      </div>
+    </div>
+
+    <!-- Media Balok IG Style -->
+    <div class="feed-media">
+      <h2>🧬 Guppy Gene & Breeding Pro</h2>
+      <p>Simulasikan bentuk morfologi, warna, hingga persilangan genetik ikan guppy F1 secara interaktif.</p>
+      <!-- Ubah 'simulator.html' sesuai nama file simulator Anda jika ditaruh terpisah -->
+      <a href="simulator.html" class="visit-btn" target="_blank">Buka Simulator 🚀</a>
+    </div>
+
+    <!-- Tombol Aksi ala IG -->
+    <div class="feed-actions">
+      <button class="action-icon-btn" onclick="toggleLike(this)">❤️ <span id="likeCount">142</span></button>
+      <button class="action-icon-btn" onclick="toggleComments()">💬 Komentar</button>
+      <button class="action-icon-btn" onclick="toggleReviews()">⭐ Beri Review</button>
+    </div>
+
+    <div class="feed-content">
+      <div class="caption">
+        <strong>guppy.lab</strong> Mainkan simulator genetik guppy terlengkap! Bebas atur pola, warna dasar, sirip Dumbo, hingga kalkulasi persilangan anakannya. Jangan lupa beri ulasan Anda di bawah ya! 👇
+      </div>
+
+      <!-- Bagian Komentar (Bisa Ditulis) -->
+      <div id="commentSection" class="comments-section">
+        <div class="comments-list" id="commentsList">
+          <div class="comment-item"><strong>Budi_Guppy:</strong> Keren banget aplikasinya, sangat membantu peternak pemula! 🐟</div>
+          <div class="comment-item"><strong>Siti_Aisyah:</strong> Fitur breedingnya mantap, akurat persentasenya.</div>
+        </div>
+        <div class="comment-form">
+          <input type="text" id="commentInput" class="comment-input" placeholder="Tulis komentar...">
+          <button class="submit-comment-btn" onclick="addComment()">Kirim</button>
+        </div>
+      </div>
+
+      <!-- Bagian Review & Rating Bintang -->
+      <div id="reviewBox" class="review-box">
+        <div style="font-weight:bold;font-size:13px;margin-bottom:4px;">Beri Rating & Review Anda:</div>
+        <div class="stars" id="starContainer">
+          <span class="star" onclick="setRating(1)">★</span>
+          <span class="star" onclick="setRating(2)">★</span>
+          <span class="star" onclick="setRating(3)">★</span>
+          <span class="star" onclick="setRating(4)">★</span>
+          <span class="star" onclick="setRating(5)">★</span>
+        </div>
+        <div class="comment-form">
+          <input type="text" id="reviewInput" class="comment-input" placeholder="Tulis ulasan / kesan...">
+          <button class="submit-comment-btn" onclick="addReview()">Kirim Review</button>
+        </div>
+        <div id="reviewList" style="margin-top:10px;font-size:12px;"></div>
+      </div>
+
+    </div>
+  </article>
+</main>
+
+<script>
+let currentRating = 0;
+
+function toggleTheme(){
+  const body = document.body;
+  const current = body.getAttribute('data-theme');
+  body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+}
+
+function toggleLike(btn){
+  let span = document.getElementById('likeCount');
+  let count = parseInt(span.innerText);
+  if(btn.style.color === 'rgb(239, 68, 68)'){
+    btn.style.color = '';
+    span.innerText = count - 1;
+  } else {
+    btn.style.color = '#ef4444';
+    span.innerText = count + 1;
+  }
+}
+
+function toggleComments(){
+  const sec = document.getElementById('commentSection');
+  sec.style.display = sec.style.display === 'none' ? 'block' : 'block';
+  document.getElementById('reviewBox').classList.remove('active');
+}
+
+function toggleReviews(){
+  const box = document.getElementById('reviewBox');
+  box.classList.toggle('active');
+}
+
+function addComment(){
+  const input = document.getElementById('commentInput');
+  if(!input.value.trim()) return;
+  
+  const list = document.getElementById('commentsList');
+  const div = document.createElement('div');
+  div.className = 'comment-item';
+  div.innerHTML = `<strong>Pengunjung:</strong> ${input.value}`;
+  list.appendChild(div);
+  input.value = '';
+  list.scrollTop = list.scrollHeight;
+}
+
+function setRating(starVal){
+  currentRating = starVal;
+  const stars = document.querySelectorAll('.star');
+  stars.forEach((s, idx) => {
+    if(idx < starVal) s.classList.add('selected');
+    else s.classList.remove('selected');
+  });
+}
+
+function addReview(){
+  const input = document.getElementById('reviewInput');
+  if(!input.value.trim() || currentRating === 0) {
+    alert('Harap pilih rating bintang dan isi ulasan terlebih dahulu!');
+    return;
+  }
+  
+  const list = document.getElementById('reviewList');
+  const div = document.createElement('div');
+  div.style.marginBottom = '6px';
+  div.innerHTML = `⭐ <strong>${currentRating}/5</strong> - "${input.value}" <span style="color:var(--text-muted);font-size:10px;">(Baru saja)</span>`;
+  list.prepend(div);
+  
+  input.value = '';
+  setRating(0);
+}
+</script>
+
+</body>
+</html>
